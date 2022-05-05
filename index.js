@@ -63,6 +63,6 @@ if (library.books.length === 0) {
   });
 }
 
-let output = document.getElementById('current-date');
-let today = DateTime.local();
+const output = document.getElementById('current-date');
+const today = DateTime.local();
 output.textContent = today.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY);
