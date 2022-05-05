@@ -2,7 +2,7 @@
 import Book from './modules/book.js';
 import { booksList, DisplayBook, library } from './modules/store.js';
 import * as funcs from './modules/functions.js';
-
+import { DateTime } from './modules/luxon.js';
 // Initializing Store
 // export const library = new Store();
 
@@ -63,4 +63,6 @@ if (library.books.length === 0) {
   });
 }
 
-// document.getElementById('current-date').innerHTML = DateTime.DATE_FULL;
+let output = document.getElementById('current-date');
+let today = DateTime.local();
+output.textContent = today.toLocaleString(DateTime.DATETIME_MED_WITH_WEEKDAY);
