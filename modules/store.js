@@ -1,4 +1,38 @@
 // eslint-disable-next-line max-classes-per-file
+// Representing pop up data
+const popUpData = [
+  {
+    title: 'add-book',
+    image: 'images/add.PNG',
+    message: 'Added Successfully',
+  },
+  {
+    title: 'remove-book',
+    image: 'images/remove.PNG',
+    message: 'Removed Successfully',
+  },
+];
+
+// alerting
+const AlertMsg = (msg, book) => {
+  const container = document.getElementById('popup');
+  const modal = `<div id='${msg.title}' class='modal'>
+                    <div class='modal-content'>
+                      <div class='msg-logo'><img src='${msg.image}' alt='${msg.title}' /></div>
+                      <h4>${book.title}</h4>
+                      <h3>${msg.message}</h3>
+                    </div>
+              </div>`;
+
+  container.innerHTML = modal;
+
+  const hideMsg = () => {
+    document.querySelector('.modal').style.display = 'none';
+  };
+
+  setTimeout(hideMsg, 2000);
+};
+
 // Checking Storage Availaibility
 const IsStorageFree = (type) => {
   let storage;
@@ -40,11 +74,9 @@ class Store {
       // eslint-disable-next-line no-use-before-define
       DisplayBook(book);
       this.books.push(book);
-      alert('Book added successfully');
+      AlertMsg(popUpData[0], book);
       this.ReloadLocalStorage();
-      return;
     }
-    alert('Book and Author Already exist');
   }
 
   // Remove book from the list
@@ -52,7 +84,7 @@ class Store {
     for (let x = 0; x < this.books.length; x += 1) {
       if (this.books[x].title === book.title && this.books[x].author === book.author) {
         this.books.splice(x, 1);
-        alert('Book remove successfully');
+        AlertMsg(popUpData[1], book);
         this.ReloadLocalStorage();
         return;
       }
