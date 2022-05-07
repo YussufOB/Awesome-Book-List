@@ -249,6 +249,11 @@ footer p {
   background-color: #fff;
 }
 
+.modal h4 {
+  color: #172b4d;
+  font-size: 20px;
+}
+
 .modal h3 {
   color: #172b4d;
   font-size: 32px;
